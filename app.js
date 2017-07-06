@@ -39,7 +39,8 @@ var appName;
 if (appEnv.isLocal) {
     require('dotenv').load();
 }
-var desc_url = process.env.DESC_URL;
+var 
+_url = process.env.DESC_URL;
 var orders_url = process.env.ORDERS_URL;
 console.log("DESC URL is", desc_url);
 console.log("Orders URL is", orders_url);
@@ -376,7 +377,7 @@ app.get('/soon', function(req, res) {
 });
 
 app.get('/about', function(req, res) {
-    res.redirect("https://github.com/IBM-Bluemix/cloudco-insurance/wiki");
+    res.redirect("https://conciergedevelopment.com");
 });
 
 app.get('/healthBenefits', isLoggedIn, function(req, res) {
