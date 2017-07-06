@@ -420,13 +420,13 @@ function buildContextObject(req, callback) {
  */
 function parsePolicyTitles(doc, callback) {
 
-    var policies = doc.policies;
+    var desc = doc.desc;
     var currentService = '';
     var policyServices = [];
     var policyProcedures = [];
     var proc = [];
 
-    policies.forEach(function(policy) {
+    desc.forEach(function(policy) {
 
         if (policy.type === currentService) {
             proc.push(policy.title);
@@ -489,21 +489,21 @@ function updateContextObject(response, userPolicy, callback) {
     if (context.chosen_procedure) {
         procedure = context.chosen_procedure;
         console.log("Procedure:", procedure);
-        var policies = userPolicy.policies;
+        var desc = userPolicy.desc;
 
-        for (var n = 0; n < policies.length; n++) {
+        for (var n = 0; n < desc.length; n++) {
             // ignore case when comparing as procedure in conversation model is all lowercase
-            // but the display value for policies has a mixed case.
-            if (policies[n].title.toUpperCase() === procedure.toUpperCase()) {
+            // but the display value for desc has a mixed case.
+            if (desc[n].title.toUpperCase() === procedure.toUpperCase()) {
                 procedure_details = {
-                    "limit": "$" + policies[n].claimLimit,
-                    "claimed": "$" + policies[n].amountClaimed,
-                    "coverage": policies[n].percentCovered + "%",
-                    "term": policies[n].scope,
-                    "start": policies[n].startDate,
-                    "end": policies[n].endDate,
-                    "code": policies[n].code,
-                    "claims": policies[n].claims
+                    "limit": "$" + desc[n].claimLimit,
+                    "claimed": "$" + desc[n].amountClaimed,
+                    "coverage": desc[n].percentCovered + "%",
+                    "term": desc[n].scope,
+                    "start": desc[n].startDate,
+                    "end": desc[n].endDate,
+                    "code": desc[n].code,
+                    "claims": desc[n].claims
                 };
             }
         }
