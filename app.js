@@ -46,7 +46,7 @@ console.log("Orders URL is", orders_url);
 
 // Cloudant
 var Logs, Benefits;
-var cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds("insurance-bot-db").url;
+var cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds("desc-bot-db").url;
 var Cloudant = require('cloudant')({
   url: cloudantURL,
   plugin: 'retry',
