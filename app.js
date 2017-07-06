@@ -17,9 +17,6 @@ var watson = require('watson-developer-cloud');
 require('./config/passport')(passport);
 var chatbot = require('./config/bot.js');
 
-//---Deployment Tracker---------------------------------------------------------
-require("cf-deployment-tracker-client").track();
-
 // configuration ===============================================================
 // load local VCAP configuration
 var vcapLocal = null
@@ -42,9 +39,9 @@ var appName;
 if (appEnv.isLocal) {
     require('dotenv').load();
 }
-var catalog_url = process.env.CATALOG_URL;
+var desc_url = process.env.DESC_URL;
 var orders_url = process.env.ORDERS_URL;
-console.log("Catalog URL is", catalog_url);
+console.log("DESC URL is", desc_url);
 console.log("Orders URL is", orders_url);
 
 // Cloudant
