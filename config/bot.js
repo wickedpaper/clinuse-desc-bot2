@@ -1,9 +1,9 @@
 /**
  * This file contains all of the web and hybrid functions for interacting with
- * Ana and the Watson Conversation service. When API calls are not needed, the
+ * Registrar and the Watson Conversation service. When API calls are not needed, the
  * functions also do basic messaging between the client and the server.
  *
- * @summary   Functions for Ana Chat Bot.
+ * @summary   Functions for Registrar Chat Bot.
  *
  * @link      cloudco.mybluemix.net
  * @since     0.0.3
@@ -111,7 +111,7 @@ function initConversation() {
 
     // if not, look it up by name or create one
     if (!conversationWorkspace) {
-      const workspaceName = 'Ana';
+      const workspaceName = 'Registrar-1';
       console.log('No conversation workspace configured in the environment.');
       console.log(`Looking for a workspace named '${workspaceName}'...`);
       conversation.listWorkspaces((err, result) => {
@@ -178,7 +178,7 @@ var chatbot = {
 
                 chatLogs(owner, conv, res, () => {
                   return callback(null, res);
-                });
+                });c
 
             } else if (params) {
                 // Send message to the conversation service with the current context
@@ -190,7 +190,7 @@ var chatbot = {
                     }
                     var conv = data.context.conversation_id;
 
-                    console.log("Got response from Ana: ", JSON.stringify(data));
+                    console.log("Got response from DESC Agent: ", JSON.stringify(data));
 
                     updateContextObject(data, userPolicy, function(err, res) {
 
