@@ -74,7 +74,7 @@ app.set('view engine', 'html');
 
 // required for passport
 app.use(session({
-    secret: 'ana-insurance-bot',
+    secret: 'desc-insurance-bot',
     resave: true,
     saveUninitialized: true
 }));
@@ -209,7 +209,7 @@ app.get('/history', isLoggedIn, function(req, res) {
 
             var allclaims = [];
 
-            doc.policies.forEach(function(policy) {
+            doc.desc.forEach(function(policy) {
 
                 if (policy.claims.length > 0) {
                     policy.claims.forEach(function(claim) {
@@ -280,7 +280,7 @@ function fileClaim(owner, claim, callback) {
                 var doc = result.docs[0];
                 var policyFound = false;
 
-                doc.policies.forEach(function(policy) {
+                doc.desc.forEach(function(policy) {
                     var message = '';
 
                     if (policy.title === claim.benefit) {
