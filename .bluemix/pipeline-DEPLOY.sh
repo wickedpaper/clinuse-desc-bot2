@@ -25,7 +25,7 @@ case "${REGION_ID}" in
 esac
 if ! cf app $CF_APP; then
   cf push $CF_APP -n $CF_APP -f $MANIFEST --no-start
-  cf set-env $CF_APP CATALOG_URL https://$DESC_APP_NAME$domain
+  cf set-env $CF_APP DESC_URL https://$DESC_APP_NAME$domain
   cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
   if [ ! -z "$CONVERSATION_WORKSPACE" ]; then
     cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE
