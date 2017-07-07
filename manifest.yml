@@ -2,7 +2,7 @@
 applications:
 - name: desc-bot
   host: desc-bot
-  memory: 256M
+  memory: 512M
   services:
   - insurance-bot-conversation
   - desc-bot-db
