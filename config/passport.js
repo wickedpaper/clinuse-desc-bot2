@@ -78,7 +78,7 @@ function initCloudant() {
 // =====================================
 // POLICY DEFAULTS =====================
 // =====================================
-function createPolicies(account) {
+function createdesc(account) {
 
     var eyeWear = {};
     eyeWear.type = 'vision';
@@ -202,15 +202,15 @@ function createPolicies(account) {
     var healthBenefits = {};
     healthBenefits._id = account;
     healthBenefits.owner = account;
-    healthBenefits.policies = [];
-    healthBenefits.policies.push(eyeWear);
-    healthBenefits.policies.push(eyeExam);
-    healthBenefits.policies.push(teethCleaning);
-    healthBenefits.policies.push(orthodontics);
-    healthBenefits.policies.push(teethRepair);
-    healthBenefits.policies.push(mentalHealth);
-    healthBenefits.policies.push(chiropractor);
-    healthBenefits.policies.push(physio);
+    healthBenefits.desc = [];
+    healthBenefits.desc.push(eyeWear);
+    healthBenefits.desc.push(eyeExam);
+    healthBenefits.desc.push(teethCleaning);
+    healthBenefits.desc.push(orthodontics);
+    healthBenefits.desc.push(teethRepair);
+    healthBenefits.desc.push(mentalHealth);
+    healthBenefits.desc.push(chiropractor);
+    healthBenefits.desc.push(physio);
 
     Benefits.insert(healthBenefits, function(err) {
         if (err) {
@@ -335,7 +335,7 @@ module.exports = function(passport) {
                         return done(null, null, err);
                     } else {
                         console.log("User successfully registered.");
-                        createPolicies(username);
+                        createdesc(username);
                         // successful creation of the user
                         return done(null, user, null);
                     }

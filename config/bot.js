@@ -1,9 +1,9 @@
 /**
  * This file contains all of the web and hybrid functions for interacting with
- * Ana and the Watson Conversation service. When API calls are not needed, the
+ * Registrar and the Watson Conversation service. When API calls are not needed, the
  * functions also do basic messaging between the client and the server.
  *
- * @summary   Functions for Ana Chat Bot.
+ * @summary   Functions for Registrar Chat Bot.
  *
  * @link      cloudco.mybluemix.net
  * @since     0.0.3
@@ -111,7 +111,7 @@ function initConversation() {
 
     // if not, look it up by name or create one
     if (!conversationWorkspace) {
-      const workspaceName = 'Ana';
+      const workspaceName = 'Registrar-1';
       console.log('No conversation workspace configured in the environment.');
       console.log(`Looking for a workspace named '${workspaceName}'...`);
       conversation.listWorkspaces((err, result) => {
@@ -178,7 +178,7 @@ var chatbot = {
 
                 chatLogs(owner, conv, res, () => {
                   return callback(null, res);
-                });
+                });c
 
             } else if (params) {
                 // Send message to the conversation service with the current context
@@ -190,7 +190,7 @@ var chatbot = {
                     }
                     var conv = data.context.conversation_id;
 
-                    console.log("Got response from Ana: ", JSON.stringify(data));
+                    console.log("Got response from DESC Agent: ", JSON.stringify(data));
 
                     updateContextObject(data, userPolicy, function(err, res) {
 
@@ -420,13 +420,13 @@ function buildContextObject(req, callback) {
  */
 function parsePolicyTitles(doc, callback) {
 
-    var policies = doc.policies;
+    var desc = doc.desc;
     var currentService = '';
     var policyServices = [];
     var policyProcedures = [];
     var proc = [];
 
-    policies.forEach(function(policy) {
+    desc.forEach(function(policy) {
 
         if (policy.type === currentService) {
             proc.push(policy.title);
@@ -489,21 +489,21 @@ function updateContextObject(response, userPolicy, callback) {
     if (context.chosen_procedure) {
         procedure = context.chosen_procedure;
         console.log("Procedure:", procedure);
-        var policies = userPolicy.policies;
+        var desc = userPolicy.desc;
 
-        for (var n = 0; n < policies.length; n++) {
+        for (var n = 0; n < desc.length; n++) {
             // ignore case when comparing as procedure in conversation model is all lowercase
-            // but the display value for policies has a mixed case.
-            if (policies[n].title.toUpperCase() === procedure.toUpperCase()) {
+            // but the display value for desc has a mixed case.
+            if (desc[n].title.toUpperCase() === procedure.toUpperCase()) {
                 procedure_details = {
-                    "limit": "$" + policies[n].claimLimit,
-                    "claimed": "$" + policies[n].amountClaimed,
-                    "coverage": policies[n].percentCovered + "%",
-                    "term": policies[n].scope,
-                    "start": policies[n].startDate,
-                    "end": policies[n].endDate,
-                    "code": policies[n].code,
-                    "claims": policies[n].claims
+                    "limit": "$" + desc[n].claimLimit,
+                    "claimed": "$" + desc[n].amountClaimed,
+                    "coverage": desc[n].percentCovered + "%",
+                    "term": desc[n].scope,
+                    "start": desc[n].startDate,
+                    "end": desc[n].endDate,
+                    "code": desc[n].code,
+                    "claims": desc[n].claims
                 };
             }
         }

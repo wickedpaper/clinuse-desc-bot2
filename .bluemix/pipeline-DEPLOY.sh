@@ -11,8 +11,8 @@ echo "Using manifest file: $MANIFEST"
 echo "Using prefix: $PREFIX"
 
 # Create CF services
-cf create-service conversation standard insurance-bot-conversation
-cf create-service cloudantNoSQLDB Lite ${PREFIX}insurance-bot-db
+cf create-service conversation standard desc-bot-conversation
+cf create-service cloudantNoSQLDB Lite ${PREFIX}desc-bot-db
 # Set app's env vars
 domain=".mybluemix.net"
 case "${REGION_ID}" in
@@ -25,7 +25,7 @@ case "${REGION_ID}" in
 esac
 if ! cf app $CF_APP; then
   cf push $CF_APP -n $CF_APP -f $MANIFEST --no-start
-  cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
+  cf set-env $CF_APP CATALOG_URL https://$DESC_APP_NAME$domain
   cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
   if [ ! -z "$CONVERSATION_WORKSPACE" ]; then
     cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE
@@ -46,7 +46,7 @@ else
   trap rollback ERR
   cf rename $CF_APP $OLD_CF_APP
   cf push $CF_APP -n $CF_APP -f $MANIFEST --no-start
-  cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
+  cf set-env $CF_APP DESC_URL https://$DESC_APP_NAME$domain
   cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
   if [ ! -z "$CONVERSATION_WORKSPACE" ]; then
     cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE

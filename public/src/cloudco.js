@@ -271,14 +271,14 @@ function getBenefits() {
             header.innerHTML = reply.owner;
         }
 
-        var policies = reply.policies;
+        var desc = reply.desc;
         var policyAreas = [];
         var policyKeys = [];
         var policyTitles = [];
 
         var benefitset = document.getElementById('benefitset');
 
-        policies.forEach(function(policy) {
+        desc.forEach(function(policy) {
 
             if (policyAreas[policy.type]) {
                 policyAreas[policy.type].push(policy);

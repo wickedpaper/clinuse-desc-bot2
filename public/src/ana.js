@@ -77,7 +77,7 @@ function userMessage(message) {
             text = response.output.text; // Only display the first response
             context = response.context; // Store the context for next round of questions
 
-            console.log("Got response from Ana: ", JSON.stringify(response));
+            console.log("DESC replied: ", JSON.stringify(response));
 
             displayMessage(text, watson);
 

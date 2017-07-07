@@ -17,9 +17,6 @@ var watson = require('watson-developer-cloud');
 require('./config/passport')(passport);
 var chatbot = require('./config/bot.js');
 
-//---Deployment Tracker---------------------------------------------------------
-require("cf-deployment-tracker-client").track();
-
 // configuration ===============================================================
 // load local VCAP configuration
 var vcapLocal = null
@@ -42,14 +39,15 @@ var appName;
 if (appEnv.isLocal) {
     require('dotenv').load();
 }
-var catalog_url = process.env.CATALOG_URL;
+var 
+_url = process.env.DESC_URL;
 var orders_url = process.env.ORDERS_URL;
-console.log("Catalog URL is", catalog_url);
+console.log("DESC URL is", desc_url);
 console.log("Orders URL is", orders_url);
 
 // Cloudant
 var Logs, Benefits;
-var cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds("insurance-bot-db").url;
+var cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds("desc-bot-db").url;
 var Cloudant = require('cloudant')({
   url: cloudantURL,
   plugin: 'retry',
@@ -77,7 +75,7 @@ app.set('view engine', 'html');
 
 // required for passport
 app.use(session({
-    secret: 'ana-insurance-bot',
+    secret: 'desc-insurance-bot',
     resave: true,
     saveUninitialized: true
 }));
@@ -212,7 +210,7 @@ app.get('/history', isLoggedIn, function(req, res) {
 
             var allclaims = [];
 
-            doc.policies.forEach(function(policy) {
+            doc.desc.forEach(function(policy) {
 
                 if (policy.claims.length > 0) {
                     policy.claims.forEach(function(claim) {
@@ -283,7 +281,7 @@ function fileClaim(owner, claim, callback) {
                 var doc = result.docs[0];
                 var policyFound = false;
 
-                doc.policies.forEach(function(policy) {
+                doc.desc.forEach(function(policy) {
                     var message = '';
 
                     if (policy.title === claim.benefit) {
@@ -379,7 +377,7 @@ app.get('/soon', function(req, res) {
 });
 
 app.get('/about', function(req, res) {
-    res.redirect("https://github.com/IBM-Bluemix/cloudco-insurance/wiki");
+    res.redirect("https://conciergedevelopment.com");
 });
 
 app.get('/healthBenefits', isLoggedIn, function(req, res) {

@@ -1,8 +1,8 @@
 ---
 applications:
-- name: dev-insurance-bot
-  host: dev-insurance-bot
+- name: dev-desc-bot
+  host: dev-desc-bot
   memory: 256M
   services:
   - insurance-bot-conversation
-  - dev-insurance-bot-db
+  - dev-desc-bot-db

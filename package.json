@@ -1,5 +1,5 @@
 {
-  "name": "CloudCo",
+  "name": "DESC APP",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,7 +8,6 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.17.1",
-    "cf-deployment-tracker-client": "*",
     "cfenv": "^1.0.3",
     "chrono-node":"*",
     "cloudant":"~1.6.2",
@@ -27,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM-Bluemix/insurance-bot.git"
+    "https://github.com/wickedpaper/repo-1001-clinuse-desc-bot.git"
   },
   "engines": {
     "node": "4.2.x"
