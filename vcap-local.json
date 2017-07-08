@@ -9,7 +9,7 @@
   "username": "540312ea-15ba-43f1-b804-9311844e7d92-bluemix",
   "password": "dc970d52234dcad928f1ea083d28e9b1a70bc968300710af35ae249ede681aa9",
   "host": "540312ea-15ba-43f1-b804-9311844e7d92-bluemix.cloudant.com",
-  "port": 443,
+  "port": ,
   "url": "https://540312ea-15ba-43f1-b804-9311844e7d92-bluemix:dc970d52234dcad928f1ea083d28e9b1a70bc968300710af35ae249ede681aa9@540312ea-15ba-43f1-b804-9311844e7d92-bluemix.cloudant.com"
 }
       }
@@ -17,11 +17,11 @@
     "conversation": [
       {
         "label": "conversation",
-        "name": "insurance-bot-conversation",
+        "name": "desc-bot-conversation",
         "credentials": {
   "url": "https://gateway.watsonplatform.net/conversation/api",
-  "username": "2dfb739b-7a20-45a4-a800-a8ae59cae844",
-  "password": "6N1ISnHokZaP"
+  "username": 
+  "password": 
 
         }
       }
