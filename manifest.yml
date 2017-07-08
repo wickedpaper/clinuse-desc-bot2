@@ -4,5 +4,5 @@ applications:
   host: desc-bot
   memory: 512M
   services:
-  - insurance-bot-conversation
+  - desc-bot-conversation
   - desc-bot-db
